@@ -1,4 +1,4 @@
-.Introduction{
+.top_header{
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -8,16 +8,16 @@
     -webkit-box-shadow: 0px 6px 18px 3px rgba(0,0,0,0.27); 
     box-shadow: 0px 6px 18px 3px rgba(0,0,0,0.27);
 }
-.ArticleText{
+.Article{
     width: 55px;
     height: 20px;
     margin-right: 40px;
     font-weight: 800;
     font-size: 1.25em;
     position: relative;
-    bottom: 6px;
+    bottom: -2px;
 }
-.ForSubjects{
+.contanier_subjects{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,7 +65,7 @@
     cursor: pointer;
 }
 .iconHamburger{    /* icon Hamburger */
-    display: block;
+    display: none;
     font-size: 2em;
 }
 @media only screen and (max-width: 700px){
