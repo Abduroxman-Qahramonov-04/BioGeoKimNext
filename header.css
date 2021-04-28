@@ -16,6 +16,8 @@
     font-size: 1.25em;
     position: relative;
     bottom: -2px;
+    text-decoration: none;
+    color: black;
 }
 .contanier_subjects{
     display: flex;
@@ -36,6 +38,10 @@
 .forAllSubject{
     font-weight: 600;
     font-size: 1.15em;
+}
+.ri-close-line{
+    font-size: 2em;
+    display: none;
 }
 /* Tllar va raqamlar uchun stillar */
 .LanguageUz{
@@ -64,19 +70,23 @@
     margin-left: 13px;
     cursor: pointer;
 }
-.iconHamburger{    /* icon Hamburger */
+#IconMenuOpen{    /* icon Hamburger */
     display: none;
     font-size: 2em;
 }
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 600px){
     .forAllSubject{display: none;}
     .LanguageUz{display: none;}
     .LanguageRu{display: none;}
     .LanguageEn{display: none;}
     .PhoneNumber{display: none;}
-    .iconHamburger{
+    #IconMenuOpen{
         display: block;
     }
+    
+}
+#SubjectsMobileVersion{
+    display: none;
 }
 
 /* Tillar va raqamlar uchun */
