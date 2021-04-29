@@ -15,7 +15,7 @@
     font-weight: 800;
     font-size: 1.25em;
     position: relative;
-    bottom: -2px;
+    bottom: 4px;
     text-decoration: none;
     color: black;
 }
@@ -29,7 +29,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;  
+    gap: 10px; 
 }
 .onlyforgeo{
     margin-left: 10px;
@@ -38,6 +38,8 @@
 .forAllSubject{
     font-weight: 600;
     font-size: 1.15em;
+    text-decoration: none;
+    color: black;
 }
 .ri-close-line{
     font-size: 2em;
@@ -73,6 +75,17 @@
 #IconMenuOpen{    /* icon Hamburger */
     display: none;
     font-size: 2em;
+    cursor: pointer;
+}
+
+#IconMenuOpen:hover{
+    font-size: 2.2em;
+    color: grey;
+}
+#IconMenuClose:hover{
+    cursor: pointer;
+    color: grey;
+    font-size: 2.2em;
 }
 @media only screen and (max-width: 600px){
     .forAllSubject{display: none;}
@@ -80,13 +93,27 @@
     .LanguageRu{display: none;}
     .LanguageEn{display: none;}
     .PhoneNumber{display: none;}
-    #IconMenuOpen{
-        display: block;
-    }
-    
+    #IconMenuOpen{display: block;}
 }
 #SubjectsMobileVersion{
     display: none;
+    background-color: rgb(87, 6, 87);
+    width: 100%;
+    height: 20em;
+    margin-top: 10px;
+    padding: 10px;
 }
+.LanguagesMB{
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.line{
+    color: white;
+    height: 2px;
+}
+
 
 /* Tillar va raqamlar uchun */

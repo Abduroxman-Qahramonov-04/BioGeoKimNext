@@ -8,6 +8,7 @@ function OpenMenu(){
 
     var SubjectsMobileVersion = document.getElementById('SubjectsMobileVersion')
     SubjectsMobileVersion.style.display = 'block'
+    
 }
 
 function CloseMenu(){
