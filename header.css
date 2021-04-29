@@ -108,11 +108,26 @@
     color: white;
     font-weight: 600;
     font-size: 1.1em;
+    transition: 0.5s;
 }
 
 .line{
     color: white;
     height: 2px;
+}
+.contanier_phone_mb_version{
+    display: flex;
+    justify-content: center;
+}
+.phone_num{
+    text-decoration: none;
+    font-size: large;
+    cursor: pointer;
+    color: white;
+    transition: 0.5s;
+}
+.phone_num:hover{
+    color: grey;
 }
 
 
