@@ -13,11 +13,12 @@
     height: 20px;
     margin-right: 40px;
     font-weight: 800;
-    font-size: 1.25em;
+    font-size: 18px;
     position: relative;
     bottom: 4px;
     text-decoration: none;
     color: black;
+    
 }
 .contanier_subjects{
     display: flex;
@@ -31,13 +32,13 @@
     align-items: center;
     gap: 10px; 
 }
-.onlyforgeo{
+.m-subject{
     margin-left: 10px;
     margin-right: 10px;
 }
-.forAllSubject{
-    font-weight: 600;
-    font-size: 1.15em;
+.header-subjects{
+    font-weight: normal;
+    font-size: 15px;
     text-decoration: none;
     color: black;
 }
@@ -47,11 +48,13 @@
 }
 /* Tllar va raqamlar uchun stillar */
 .LanguageUz{
-    color: blue;
-    font-weight: 800;
+    color: #2680EB;
+    font-weight: 600;
+    font-size: 15px;
 }
 .LanguageEn{
-    font-weight: 800;
+    font-weight: 600;
+    font-size: 15px;
 }
 .LanguageEn::before{
     content: '';
@@ -64,13 +67,15 @@
     top: 21px;
 }
 .LanguageRu{
-    font-weight: 800;
+    font-weight: 600;
+    font-size: 15px;
 }
 .PhoneNumber{
-    font-weight: 800;
-    color: blue;
+    font-weight: 600;
+    color: #2680EB;
     margin-left: 13px;
     cursor: pointer;
+    font-size: 15px;
 }
 #IconMenuOpen{    /* icon Hamburger */
     display: none;
@@ -88,12 +93,15 @@
     font-size: 2.2em;
 }
 @media only screen and (max-width: 600px){
-    .forAllSubject{display: none;}
+    .header-subjects{display: none;}
     .LanguageUz{display: none;}
     .LanguageRu{display: none;}
     .LanguageEn{display: none;}
     .PhoneNumber{display: none;}
     #IconMenuOpen{display: block;}
+}
+@media only screen and (max-width: 800px){
+    .PhoneNumber{display: none;}
 }
 #SubjectsMobileVersion{
     display: none;

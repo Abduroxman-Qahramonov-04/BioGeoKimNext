@@ -1,9 +1,36 @@
 .Footer-top{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #EBEBEB;
+    height: 120px;
+    
 }
 .footer-subjects{
     display: flex;
     justify-content: space-between;
     gap: 20px;
+}
+.social-icon{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    
+}
+.link-site{
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+}
+.footerSubjects{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+.footer-subjects:hover{
+    color: rgb(20, 19, 19);
+}
+.iconAdd{
+    font-size: 30px;
 }
