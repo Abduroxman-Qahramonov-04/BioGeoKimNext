@@ -8,25 +8,25 @@
     -webkit-box-shadow: 0px 6px 18px 3px rgba(0,0,0,0.27); 
     box-shadow: 0px 6px 18px 3px rgba(0,0,0,0.27);
 }
-.Article{
+.title{
     width: 55px;
     height: 20px;
     margin-right: 40px;
     font-weight: 800;
     font-size: 18px;
     position: relative;
-    bottom: 4px;
     text-decoration: none;
     color: black;
     
 }
+
 .contanier_subjects{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
-.ForLanguage{
+.contanier-language{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +36,7 @@
     margin-left: 10px;
     margin-right: 10px;
 }
-.header-subjects{
+.categories{
     font-weight: normal;
     font-size: 15px;
     text-decoration: none;
@@ -47,16 +47,16 @@
     display: none;
 }
 /* Tllar va raqamlar uchun stillar */
-.LanguageUz{
+.translate{
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+.translate:active{
     color: #2680EB;
-    font-weight: 600;
-    font-size: 15px;
 }
-.LanguageEn{
-    font-weight: 600;
-    font-size: 15px;
-}
-.LanguageEn::before{
+
+.translate-after::after{
     content: '';
     position: absolute;
     width: 2px;
@@ -65,8 +65,9 @@
     margin-right: 2em;
     margin-left:2em;
     top: 21px;
+    right: 130px;
 }
-.LanguageRu{
+.translate-ru{
     font-weight: 600;
     font-size: 15px;
 }
@@ -94,9 +95,7 @@
 }
 @media only screen and (max-width: 600px){
     .header-subjects{display: none;}
-    .LanguageUz{display: none;}
-    .LanguageRu{display: none;}
-    .LanguageEn{display: none;}
+    .translate{display: none;}
     .PhoneNumber{display: none;}
     #IconMenuOpen{display: block;}
 }
@@ -133,6 +132,7 @@
     cursor: pointer;
     color: white;
     transition: 0.5s;
+    list-style: none;
 }
 .phone_num:hover{
     color: grey;

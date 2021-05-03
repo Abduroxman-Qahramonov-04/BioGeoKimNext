@@ -1,10 +1,13 @@
 .Footer-top{
+    position: absolute;
+    bottom: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     background-color: #EBEBEB;
     height: 120px;
+    width: 100%;
     
 }
 .footer-subjects{
@@ -21,12 +24,15 @@
 .link-site{
     text-decoration: none;
     color: black;
-    font-size: 30px;
+    font-weight: 600;
+    font-size: 17px;
+    font-family: Rubik;
 }
 .footerSubjects{
     text-decoration: none;
-    font-size: 20px;
+    font-size: 15px;
     color: black;
+    
 }
 .footer-subjects:hover{
     color: rgb(20, 19, 19);
