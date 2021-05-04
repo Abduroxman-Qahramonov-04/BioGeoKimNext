@@ -16,17 +16,18 @@
     font-size: 18px;
     position: relative;
     text-decoration: none;
-    color: black;
+    color: var(--black_color);
+    top: 16px;
     
 }
 
-.contanier_subjects{
+.categories{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
-.contanier-language{
+.language-contanier{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,107 +37,128 @@
     margin-left: 10px;
     margin-right: 10px;
 }
-.categories{
+.categorie{
     font-weight: normal;
     font-size: 15px;
     text-decoration: none;
-    color: black;
+    color: var(--black_color);
 }
-.ri-close-line{
-    font-size: 2em;
-    display: none;
+.wand{
+    width: 1px;
+    height: 17px;
+    background-color: var(--black_color);
+    position: relative;
 }
+
+
 /* Tllar va raqamlar uchun stillar */
-.translate{
+.language{
     font-weight: 600;
     font-size: 15px;
     cursor: pointer;
 }
-.translate:active{
-    color: #2680EB;
+.language:active{
+    color: var(--primary_color);
 }
-
-.translate-after::after{
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 18px;
-    background-color: black;
-    margin-right: 2em;
-    margin-left:2em;
-    top: 21px;
-    right: 130px;
-}
-.translate-ru{
-    font-weight: 600;
-    font-size: 15px;
+.line{
+    display: none;
+    height: 2px;
+    width: 100%;
+    background-color: aqua;
+    position: relative;
+    top: 9em;
+    right: 50px;
+    transition: 1s;
 }
 .PhoneNumber{
     font-weight: 600;
-    color: #2680EB;
-    margin-left: 13px;
+    color: var(--primary_color);
     cursor: pointer;
     font-size: 15px;
 }
-#IconMenuOpen{    /* icon Hamburger */
-    display: none;
-    font-size: 2em;
-    cursor: pointer;
-}
+/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
 
-#IconMenuOpen:hover{
-    font-size: 2.2em;
-    color: grey;
-}
-#IconMenuClose:hover{
-    cursor: pointer;
-    color: grey;
-    font-size: 2.2em;
-}
 @media only screen and (max-width: 600px){
-    .header-subjects{display: none;}
-    .translate{display: none;}
-    .PhoneNumber{display: none;}
-    #IconMenuOpen{display: block;}
+    .wand{display: none;}
+    .icon-menu-contanier{display: block; cursor: pointer;}
+    .icon-menu-contanier::before{
+        content: '';
+        background-color: var(--black_color);
+        position: absolute;
+        width: 24px;
+        height: 3px;
+        right: 12px;
+        top: 26px;
+    }
+    .icon-menu-contanier::after{
+        content: '';
+        background-color: var(--black_color);
+        position: absolute;
+        width: 24px;
+        height: 3px;
+        right: 12px;
+        top: 26px;
+    }
+    .first-wand{
+        position: absolute;
+        right: 12px;
+        background-color: var(--black_color);
+        width: 21px;
+        height: 3.1px;
+        top: 20px;
+    }
+    .second-wand{
+        position: absolute;
+        right: 12px;
+        background-color: var(--black_color);
+        width: 21px;
+        height: 3.1px;
+        top: 32px;
+    }
+    .icon-menu-contanier::before{
+        transition: all 0.3s ease 0s;
+    }
+    .icon-menu-contanier::after{
+        transition: all 0.3s ease 0s;
+    }
+    .icon-menu-contanier.active:before{
+        transform: rotate(45deg);
+        transition: all 0.3s ease 0s;
+    }
+    .icon-menu-contanier.active:after{
+        transform: rotate(-45deg);
+    }
+    .icon-menu-contanier.active i{
+        transform: scale(0);
+    }
+    .categories{
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 50vh;
+        padding: 100px 20px 30px 20px;
+        transition: all 0.3s ease 0s;
+    }
+    .categorie{
+        margin: 0;
+    }
+    .categories.active{
+        top: 66px;
+        background-color: rgb(133, 11, 133);
+        display: block;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+        
+    }
+    .line.active{display: block;}
+    .language-contanier{display: none;}
+
+
 }
 @media only screen and (max-width: 800px){
     .PhoneNumber{display: none;}
 }
-#SubjectsMobileVersion{
-    display: none;
-    background-color: rgb(87, 6, 87);
-    width: 100%;
-    height: 20em;
-    margin-top: 10px;
-    padding: 10px;
-}
-.LanguagesMB{
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    font-size: 1.1em;
-    transition: 0.5s;
-}
 
-.line{
-    color: white;
-    height: 2px;
-}
-.contanier_phone_mb_version{
-    display: flex;
-    justify-content: center;
-}
-.phone_num{
-    text-decoration: none;
-    font-size: large;
-    cursor: pointer;
-    color: white;
-    transition: 0.5s;
-    list-style: none;
-}
-.phone_num:hover{
-    color: grey;
-}
 
 
 /* Tillar va raqamlar uchun */

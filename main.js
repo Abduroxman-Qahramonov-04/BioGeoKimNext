@@ -1,28 +1,8 @@
-function OpenMenu(){
-    var iconMenuOpen = document.getElementById('IconMenuOpen')
-    iconMenuOpen.style.display = 'none'
-
-    var iconMenuClose = document.getElementById('IconMenuClose')
-    iconMenuClose.style.display = 'block'
-    iconMenuClose.addEventListener('click',CloseMenu)
-
-    var SubjectsMobileVersion = document.getElementById('SubjectsMobileVersion')
-    SubjectsMobileVersion.style.display = 'block'
+window.onload = function() {
+        document.querySelector('.icon-menu-contanier').addEventListener('click', function() {
+        document.querySelector('.icon-menu-contanier').classList.toggle('active')
+        document.querySelector('.categories').classList.toggle('active')
+        document.querySelector('.line').classList.toggle('active')
+        document.querySelector('.language-contanier').classList.toggle('active')
+    })
 }
-
-function CloseMenu(){
-    var iconMenuOpen = document.getElementById('IconMenuOpen')
-    iconMenuOpen.style.display = 'block'
-
-    var iconMenuClose = document.getElementById('IconMenuClose')
-    iconMenuClose.style.display = 'none'
-    
-
-    var SubjectsMobileVersion = document.getElementById('SubjectsMobileVersion')
-    SubjectsMobileVersion.style.display = 'none'
-}
-
-window.addEventListener('load',function(){
-    var iconMenuOpen = document.getElementById('IconMenuOpen')
-    iconMenuOpen.addEventListener('click',OpenMenu)
-})
