@@ -154,6 +154,7 @@
     .title{display: none;}
     .categorie{
         margin: 0;
+        color: white;
     }
     .categories.active{
         top: 66px;
@@ -168,6 +169,9 @@
         position: relative;
         top: 255px;
         left: 0;
+    }
+    .language{
+        color: white;
     }
     
 
