@@ -144,3 +144,12 @@
     }
     .phone{display: inline;}
 }
+@media only screen and (min-width: 1700px){
+    body{
+        display: flex;
+        justify-content: center;
+    }
+    .header-menu{
+        width: 1700px;
+    }
+}
