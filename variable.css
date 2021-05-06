@@ -2,4 +2,9 @@
     --primary_color : #2680EB;
     --secondary_color : grey;
     --black_color : #000000;
+    --white_color : #ffffff;
+    --primary_size : 15px;
+    --secondary_size : 19px;
+    --primary_weight: 500;
+    --secondary_weight:800;
 }

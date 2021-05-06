@@ -1,181 +1,146 @@
-.top_header{
+.header-menu{
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    align-items: center;
+    padding: 0 36px;
+    width: 100vw;
     height: 60px;
-    gap: 1px;
-    padding-left: 2.5em;
-    padding-right: 2.5em;
     -webkit-box-shadow: 0px 6px 18px 3px rgba(0,0,0,0.27); 
     box-shadow: 0px 6px 18px 3px rgba(0,0,0,0.27);
 }
-.mb-vr-title{
-    display: none;
-    position: relative;
-    bottom: 60px;
-    margin-left: 22px;
-    text-decoration: none;
-    font-size: 19px;
-    color: var(--black_color);
-    font-weight: 800;
-
+.menu-box{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 .title{
-    width: 20px;
-    height: 20px;
-    font-weight: 800;
-    font-size: 18px;
+    font-size: var(--secondary_size);
+    font-weight: var(--secondary_weight);
+    cursor: pointer;
     position: relative;
-    text-decoration: none;
-    color: var(--black_color);
-    margin-right: 30px;
+    top: 4px;
+    margin-right: 60px;
 }
-
 .categories{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
 }
-.language-contanier{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px; 
-}
-.m-subject{
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.categorie{
-    font-weight: normal;
-    font-size: 15px;
+.category{
     text-decoration: none;
+    font-size: var(--primary_size);
+    color: var(--black_color);
+    font-weight: var(--primary_weight);
+}
+.languages{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+}
+.language{
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: var(--primary_weight);
     color: var(--black_color);
 }
+.language:hover{color: var(--black_color);}
+.language:active{color: var(--primary_color);}
 .wand{
     width: 1px;
     height: 17px;
+    margin: 0 10px;
     background-color: var(--black_color);
-    position: relative;
 }
+.phone{text-decoration: none;}
+.line{display: none;}
 
-
-/* Tllar va raqamlar uchun stillar */
-.language{
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
+/* Mobile version */
+@media only screen and (max-width: 800px){
+    .phone{display: none;}
 }
-.language:active{
-    color: var(--primary_color);
-}
-.line{
-    display: none;
-    height: 2px;
-    width: 100%;
-    background-color: aqua;
-    position: relative;
-    top: 9em;
-    transition: 1s;
-}
-.PhoneNumber{
-    font-weight: 600;
-    color: var(--primary_color);
-    cursor: pointer;
-    font-size: 15px;
-}
-/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
-
 @media only screen and (max-width: 600px){
-    .language-contanier{visibility: hidden; transition: all 0.3s ease 0s;}
-    .mb-vr-title{display: inline;}
-    .wand{display: none;}
-    .icon-menu-contanier{display: block; cursor: pointer;}
-    .icon-menu-contanier::before{
+    .header-burger{
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 20px;
+        z-index: 5;
+        cursor: pointer;
+        right: 20px;
+        top: 3%;
+    }
+    .header-burger::before,
+    .header-burger::after{
         content: '';
-        background-color: var(--black_color);
+        background-color: #000000;
         position: absolute;
-        width: 24px;
+        width: 100%;
         height: 3px;
-        right: 12px;
-        top: 26px;
+        left: 0;
     }
-    .icon-menu-contanier::after{
-        content: '';
-        background-color: var(--black_color);
+    .header-burger i{
         position: absolute;
-        width: 24px;
+        left: 0;
+        background-color: #000000;
+        width: 90%;
         height: 3px;
-        right: 12px;
-        top: 26px;
+        top: 9px;
     }
-    .first-wand{
-        position: absolute;
-        right: 12px;
-        background-color: var(--black_color);
-        width: 21px;
-        height: 3.1px;
-        top: 20px;
-    }
-    .second-wand{
-        position: absolute;
-        right: 12px;
-        background-color: var(--black_color);
-        width: 21px;
-        height: 3.1px;
-        top: 32px;
-    }
-    .icon-menu-contanier::before{
+    .header-burger::before{
+        top: 0px;
         transition: all 0.3s ease 0s;
+
     }
-    .icon-menu-contanier::after{
+    .header-burger::after{
+        bottom: 0;
         transition: all 0.3s ease 0s;
+
     }
-    .icon-menu-contanier.active:before{
+    .header-burger.active:before{
         transform: rotate(45deg);
+        top: 9px;
         transition: all 0.3s ease 0s;
     }
-    .icon-menu-contanier.active:after{
+    .header-burger.active:after{
         transform: rotate(-45deg);
+        bottom: 9px;
     }
-    .icon-menu-contanier.active i{
+    .header-burger.active i{
         transform: scale(0);
     }
-    .categories{
+    .title{
+        position: absolute;
+        left: 20px;
+        top: 3%;
+    }
+    .wand{display: none;}
+    .menu-box{
+        display: none;
         position: fixed;
         top: -100%;
         left: 0;
         width: 100%;
-        height: 50vh;
+        height: 100vh;
+        z-index: 3;
         padding: 100px 20px 30px 20px;
-        transition: all 0.3s ease 0s;
+        transition: all 0.9s ease 0s;
     }
-    .title{display: none;}
-    .categorie{
-        margin: 0;
-    }
-    .categories.active{
-        top: 66px;
-        background-color: rgb(133, 11, 133);
+    .menu-box.active{
         display: block;
+        top: 70px;
+        background-color: rgb(53, 2, 53);
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
-        
     }
-    /* .line.active{display: block;} */
-    .language-contanier.active{
-        visibility: visible;
-        position: relative;
-        top: 255px;
-        left: 0;
+    .categories{display: block;}
+    .category{color: var(--white_color);}
+    .languages{display: block;}
+    .language{color: var(--white_color);}
+    .line{
+        display: block;
+        height: 3px;
+        background-color: var(--black_color);
+        width: 100%;
+        margin: 15px 0;
     }
-    
-
+    .phone{display: inline;}
 }
-@media only screen and (max-width: 800px){
-    .PhoneNumber{display: none;}
-}
-
-
-
-/* Tillar va raqamlar uchun */
