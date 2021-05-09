@@ -1,5 +1,4 @@
-
-window.onload = function() {
+window.addEventListener('load', function() {
         document.querySelector('.header-burger').addEventListener('click', function() {
         document.querySelector('.header-burger').classList.toggle('active')
         document.querySelector('.menu-box').classList.toggle('active')
@@ -8,4 +7,4 @@ window.onload = function() {
         document.querySelector('#LanguageEN').innerHTML = 'English'
         
     })
-}
+})
