@@ -1,3 +1,4 @@
+
 window.onload = function() {
         document.querySelector('.header-burger').addEventListener('click', function() {
         document.querySelector('.header-burger').classList.toggle('active')
@@ -5,6 +6,6 @@ window.onload = function() {
         document.querySelector('#LanguageUZ').innerHTML = 'O`zbekcha'
         document.querySelector('#LanguageRU').innerHTML = 'Русский'
         document.querySelector('#LanguageEN').innerHTML = 'English'
-
+        
     })
 }

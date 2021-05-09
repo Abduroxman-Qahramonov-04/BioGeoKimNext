@@ -2,23 +2,51 @@
     display: flex;
     align-items: center;
     padding: 0 36px;
-    width: 100vw;
+    width: 100%;
     height: 60px;
     -webkit-box-shadow: 0px 6px 18px 3px rgba(0,0,0,0.27); 
     box-shadow: 0px 6px 18px 3px rgba(0,0,0,0.27);
 }
+
 .menu-box{
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 .title{
+    display: flex;
     font-size: var(--secondary_size);
     font-weight: var(--secondary_weight);
     cursor: pointer;
     position: relative;
     top: 4px;
     margin-right: 60px;
+}
+
+.title::before{
+    content: '';
+    position: absolute;
+    top: 80%;
+    height: 2px;
+    width: 0%;
+    background-color: var(--third_color);
+    margin-top: 10px;
+    transition: all 0.4s;
+}
+.title:hover:before{
+    content: '';
+    position: absolute;
+    top: 80%;
+    height: 2px;
+    width: 70%;
+    background-color: var(--third_color);
+    margin-top: 10px;
+}
+.title span{
+    color: var(--third_color);
+}
+.title img{
+    margin-left: 5px;
 }
 .categories{
     display: flex;
@@ -112,6 +140,7 @@
         position: absolute;
         left: 20px;
         top: 3%;
+        z-index: 4;
     }
     .wand{display: none;}
     .menu-box{
@@ -123,33 +152,30 @@
         height: 100vh;
         z-index: 3;
         padding: 100px 20px 30px 20px;
-        transition: all 0.9s ease 0s;
+        transition: all 0.9s ease 1s;
     }
     .menu-box.active{
         display: block;
-        top: 70px;
-        background-color: rgb(53, 2, 53);
+        top: 0;
+        background-color: rgb(255, 255, 255);
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+        transition: all 0.9s ease 1s;
     }
     .categories{display: block;}
-    .category{color: var(--white_color);}
+    .category{transition: all 0.3s;}
+    .category:hover{
+        font-size: 17px;
+    }
     .languages{display: block;}
-    .language{color: var(--white_color);}
     .line{
         display: block;
         height: 3px;
-        background-color: var(--black_color);
+        background-color: var(--third_color);
         width: 100%;
         margin: 15px 0;
     }
     .phone{display: inline;}
+    
 }
-@media only screen and (min-width: 1700px){
-    body{
-        display: flex;
-        justify-content: center;
-    }
-    .header-menu{
-        width: 1700px;
-    }
-}
+
+
