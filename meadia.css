@@ -1,5 +1,8 @@
 @media only screen and (max-width: 800px){
     .phone{display: none;}
+    .footer-container ul{
+        gap: 15px;
+    }
 }
 @media only screen and (max-width: 600px){
     .header-burger{
@@ -11,6 +14,9 @@
         cursor: pointer;
         right: 20px;
         top: 3%;
+    }
+    .header-menu section{
+        margin: 0 10px;
     }
     .header-burger::before,
     .header-burger::after{
@@ -90,6 +96,8 @@
         margin: 15px 0;
     }
     .phone{display: inline;}
+    /* footer */
+    .footer-container ul{display: none;}
     
 }
 @media only screen and (min-width: 1400px){
@@ -103,4 +111,6 @@
         display: flex;
         justify-content: center;
     }
+    /* footer */
+    
 }

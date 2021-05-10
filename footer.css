@@ -1,42 +1,40 @@
-.Footer-top{
+.footer-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
     position: absolute;
     bottom: 0;
+    background-color: var(--footer_color);
+    padding: 0 36px;
+}
+.footer-container div{
+    width: 1400px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #EBEBEB;
-    height: 120px;
-    width: 100%;
-    
 }
-.footer-subjects{
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-.social-icon{
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    
-}
-.link-site{
+.footer-container section a{
     text-decoration: none;
-    color: black;
-    font-weight: 600;
+    color: var(--black_color);
+}
+.footer-container ul{
+    display: flex;
+    gap: 40px;
+}
+.footer-title{
+    font-size: var(--secondary_size);
+    font-weight: var(--secondary_weight);
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+}
+.footer-title span{
+    color: var(--third_color);
+}
+.footer-link{
     font-size: 17px;
-    font-family: Rubik;
 }
-.footerSubjects{
-    text-decoration: none;
-    font-size: 15px;
-    color: black;
-    
-}
-.footer-subjects:hover{
-    color: rgb(20, 19, 19);
-}
-.iconAdd{
-    font-size: 30px;
+.footer-link i{
+    margin: 0 5px;
 }

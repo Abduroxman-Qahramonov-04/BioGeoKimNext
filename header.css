@@ -51,7 +51,7 @@
 .categories{
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 40px;
 }
 .category{
     text-decoration: none;
@@ -82,7 +82,6 @@
 .phone{text-decoration: none;}
 .line{display: none;}
 
-/* Mobile version */
 
 
 
