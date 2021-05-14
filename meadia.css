@@ -3,8 +3,11 @@
     .footer-container ul{
         gap: 15px;
     }
+    .footer-container{position: relative; bottom: 0;}
+    .articles{display: flex; justify-content: center;}
 }
 @media only screen and (max-width: 600px){
+    .header-menu{z-index: 3;}
     .header-burger{
         display: block;
         position: absolute;
@@ -13,7 +16,7 @@
         z-index: 5;
         cursor: pointer;
         right: 20px;
-        top: 3%;
+        top: 26%;
     }
     .header-menu section{
         margin: 0 10px;
@@ -60,7 +63,7 @@
     .title{
         position: absolute;
         left: 20px;
-        top: 3%;
+        top: 26%;
         z-index: 4;
     }
     .wand{display: none;}
@@ -98,6 +101,7 @@
     .phone{display: inline;}
     /* footer */
     .footer-container ul{display: none;}
+    .footer-container{position: relative; bottom: 0;}
     
 }
 @media only screen and (min-width: 1400px){
