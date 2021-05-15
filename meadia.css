@@ -139,6 +139,7 @@
         top: 94px !important;
         right: 10px !important;
         font-size: 75% !important;
+    }
 }
 @media only screen and (max-width: 290px){
     .articles article{
