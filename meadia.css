@@ -1,3 +1,18 @@
+@media only screen and (min-width: 1400px){
+    .menu-box{
+        width: 1100px;
+    }
+    .header-menu section{
+        width: 200px;
+    }
+    .header-menu{
+        display: flex;
+        justify-content: center;
+    }
+    .main{display: flex; justify-content: center;}
+    
+    
+}
 @media only screen and (max-width: 913px){
     .articles{display: flex; justify-content: center;}
     .section-info{display: flex; justify-content: center;}
@@ -106,18 +121,34 @@
     .footer-container{position: relative; bottom: 0;}
     
 }
-@media only screen and (min-width: 1400px){
-    .menu-box{
-        width: 1100px;
+@media only screen and (max-width: 500px){
+    .articles article{
+        height: 120px  !important;
+        width: 250px !important; 
     }
-    .header-menu section{
-        width: 200px;
+    .article{
+        width: 70% !important;
+        height: 35% !important;
     }
-    .header-menu{
-        display: flex;
-        justify-content: center;
+}
+@media only screen and (max-width: 290px){
+    .articles article{
+        height: 90px  !important;
+        width: 170px !important; 
     }
-    .main{display: flex; justify-content: center;}
-    
-    
+    .article{
+        width: 70% !important;
+        height: 35% !important;
+    }
+    .footer-container div{
+        display: block;
+    }
+    .category-button{
+        position: absolute;
+        top: 80px !important;
+        right: 12px !important;
+        width: 55px !important;
+        height: 25px !important;
+        font-size: 65% !important;
+    }
 }
