@@ -16,6 +16,7 @@
 @media only screen and (max-width: 913px){
     .articles{display: flex; justify-content: center;}
     .section-info{display: flex; justify-content: center;}
+    .more-info{display: flex; justify-content: center;}
 }
 @media only screen and (max-width: 800px){
     .phone{display: none;}
