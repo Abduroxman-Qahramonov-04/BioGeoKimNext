@@ -9,6 +9,7 @@
     position: fixed;
     top: 0;
     z-index: 4 !important; 
+    background-color: var(--white_color);
 }
 
 .menu-box{
