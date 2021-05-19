@@ -136,9 +136,6 @@
     .category-button {
         width: 72px !important;
         height: 25px !important;
-        position: absolute !important;
-        top: 94px !important;
-        right: 10px !important;
         font-size: 75% !important;
     }
 }
@@ -155,9 +152,6 @@
         display: block;
     }
     .category-button{
-        position: absolute;
-        top: 80px !important;
-        right: 12px !important;
         width: 55px !important;
         height: 25px !important;
         font-size: 65% !important;
