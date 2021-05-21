@@ -1,11 +1,11 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: Rubik;
-
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 html{
-    scroll-behavior: smooth ;
+    scroll-behavior: smooth;
 }
 li{
     list-style: none;  
@@ -15,4 +15,8 @@ li{
 ul{
     margin: 0;
     padding: 0;
+}
+a{
+    text-decoration: none;
+    
 }

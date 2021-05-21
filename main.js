@@ -21,22 +21,27 @@ function createDinamicArticles(imgSrc,title,date){
     let FirstDiv = document.createElement('div')
     FirsFigcaption.append(FirstDiv)
 
+    let a_for_image = document.createElement('a')
+    a_for_image.href = "./article.html"
+    FirstDiv.append(a_for_image)
+    
+
     let ArticleImg = document.createElement('img')
     ArticleImg.src = BASE_IMAGE_URL + imgSrc
 
-    FirstDiv.append(ArticleImg)
+    a_for_image.append(ArticleImg)
 
     let CategoryButton = document.createElement('button')
     CategoryButton.classList.add('category-button')
     CategoryButton.innerText = 'Category1'
-    FirstDiv.append(CategoryButton)
+    a_for_image.append(CategoryButton)
 
     let SecondDiv = document.createElement('div')
     SecondDiv.classList.add('informations')
     FirsFigcaption.append(SecondDiv)
 
     let h4 = document.createElement('h4')
-    h4.classList.add('info')
+    h4.classList.add('info','line-clamp')
     h4.innerText = title
     SecondDiv.append(h4)
 
@@ -119,19 +124,15 @@ async function getFetchApi(){
     try{
         const response = await fetch('http://192.144.37.95:8080/api/articles?langId=1');
         const leadElements = await response.json();
-        const biology1 = document.getElementById('biology1');
-        const geografy1 = document.getElementById('geografy1');
-        const Kimyo1 = document.getElementById('Kimyo1');
-        const otherArticle1 = document.getElementById('otherArticle1')
-        const otherArticle2 = document.getElementById('otherArticle2')
-        const otherArticle3 = document.getElementById('otherArticle3')
+        
         console.log(leadElements)
         
         for (let index = 0; index < 3; index++) {
             const items = leadElements[index];
             createDinamicArticles(items.image,items.title,items.date)
-            createMoreArticles(items.author,items.date,items.title,items.date,items.body,items.date)
+            createMoreArticles(leadElements[4].title,leadElements[4].date,leadElements[5].title,leadElements[5].date,leadElements[6].title,leadElements[6].date)
         }
+        
             
         }
     catch (e){
