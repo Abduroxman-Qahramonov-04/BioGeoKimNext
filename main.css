@@ -157,3 +157,15 @@
 .subjects-main a {
     color: var(--black_color);
 }
+.subjects-main-section2 nav div{
+    height: 544px;
+    background-color: aqua;
+}
+.subjects-main-section2:first-child{
+    width: 850px;
+    background-color: blue;
+}
+.subjects-main-section2:last-child{
+    width: 410px;
+    background-color: chartreuse;
+}
