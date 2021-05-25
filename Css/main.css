@@ -90,7 +90,7 @@
 .other-article p{
     font-weight: var(--third_weight);
     font-size: var(--primary_size);
-    margin-bottom: 7px;
+    margin-bottom: 23px;
 }
 .other-article span{
     font-size: 12px;
@@ -107,65 +107,5 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;  
-  }
-  
-/* subjects css */
-.subjects-main{
-    width: 100%;
-    padding: 0 36px;
 }
-.subjects-main section{
-    width: 100%;
-    height: 100%;
-    margin-top: 90px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-}
-.subjects-main section pre {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.subjects-main section div {
-    height: 18px;
-    width: 1px;
-    background-color: var(--black_color);
-    color: var(--black_color);
-}
-.subjects-main section strong{
-    width: 3px;
-    height: 26px;
-    background-color: var(--primary_color);
-}
-.subjects-main section span {
-    font-size: 22px;
-    font-weight: var(--third_weight);
-    
-}
-.subjects-main section pre i {
-    width: 2px;
-    height: 21px;
-    background-color: var(--black_color);
-}
-.subjects-main section pre h5 {
-    font-size: var(--secondary_size);
-    font-weight: var(--third_weight);
-    margin-top: 8px;
-}
-.subjects-main a {
-    color: var(--black_color);
-}
-.subjects-main-section2 nav div{
-    height: 544px;
-    background-color: aqua;
-}
-.subjects-main-section2:first-child{
-    width: 850px;
-    background-color: blue;
-}
-.subjects-main-section2:last-child{
-    width: 410px;
-    background-color: chartreuse;
-}
+

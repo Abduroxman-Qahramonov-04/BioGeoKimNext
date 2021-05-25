@@ -8,6 +8,8 @@ function ToggleClass(){
 // work with server
 const BASE_URL = 'http://192.144.37.95:8080/api';
 const BASE_IMAGE_URL = 'http://192.144.37.95/images/'
+let SELECTED_JOURNAL_ID = null;
+let SELECTED_LANG_ID = null;
 let ID = 0
 
 function createDinamicArticles(imgSrc,title,date){
@@ -121,25 +123,38 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
     contanier.lastElementChild.lastElementChild.innerHTML = leadElements.date
 } */
 async function getFetchApi(){
+    const url = 'http://192.144.37.95:8080/api/articles?langId=1';
     try{
-        const response = await fetch('http://192.144.37.95:8080/api/articles?langId=1');
+        const response = await fetch(url);
         const leadElements = await response.json();
         
-        console.log(leadElements)
+        console.log(leadElements)   
         
         for (let index = 0; index < 3; index++) {
             const items = leadElements[index];
-            createDinamicArticles(items.image,items.title,items.date)
-            createMoreArticles(leadElements[4].title,leadElements[4].date,leadElements[5].title,leadElements[5].date,leadElements[6].title,leadElements[6].date)
-        }
-        
             
+            GetFullInfo(items)
         }
+    }
     catch (e){
         console.log(e)
     }
 }
-
+function GetFullInfo(DataApi){
+        let cardTitle = DataApi.title;
+        let cardImage = DataApi.image;  
+        let dateT = new Date(DataApi.date);
+        let day = dateT.getDay();
+        let month = dateT.getMonth();
+        let year = dateT.getFullYear(); 
+        let cardMainDate = day +'.'+month+'.'+year;
+        
+        createDinamicArticles(cardImage,cardTitle,cardMainDate)
+        createMoreArticles(cardTitle,cardMainDate,cardTitle,cardMainDate,cardTitle,cardMainDate)
+}
+function randomNumber(max){
+    return Math.floor(Math.random() * max);
+ }
 window.addEventListener('load', function() {
         document.querySelector('.header-burger').addEventListener('click', ToggleClass)
         getFetchApi()
