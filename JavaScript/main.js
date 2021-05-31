@@ -11,6 +11,10 @@ const BASE_IMAGE_URL = 'http://192.144.37.95/images/'
 let SELECTED_JOURNAL_ID = null;
 let SELECTED_LANG_ID = null;
 let ID = 0
+const pageUrl = new URL(window.location.href)
+const id = pageUrl.searchParams.get('id')
+console.log(pageUrl)
+console.log(id)
 
 function createDinamicArticles(imgSrc,title,date){
     const sectionInfo = document.getElementById('sectionInfo')
@@ -24,7 +28,7 @@ function createDinamicArticles(imgSrc,title,date){
     FirsFigcaption.append(FirstDiv)
 
     let a_for_image = document.createElement('a')
-    a_for_image.href = "./article.html"
+    a_for_image.href = './Article.html?langId=1' + '&id=' + id 
     FirstDiv.append(a_for_image)
     
 
@@ -53,6 +57,7 @@ function createDinamicArticles(imgSrc,title,date){
     SecondDiv.append(b_date)
 
     ID++
+
 }
 function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,articleMiddleDate,articleBottomtext,articleBottomDate){
     const more_info = document.getElementById('more-info')
@@ -103,7 +108,7 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
     bottom_article.append(p_art3)
 
     let dateSpan3 = document.createElement('span')
-    dateSpan3.innerText = articleBottomDate
+    dateSpan3.innerText = articleBottomDate;
     bottom_article.append(dateSpan3)
 
     moreFigaption.append(document.createElement('br'))
@@ -116,12 +121,6 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
 
     ID++
 }
-
-/* function accessArticleElements(contanier,leadElements){
-    contanier.firstElementChild.firstElementChild.src = leadElements.image
-    contanier.lastElementChild.firstElementChild.innerText = leadElements.title
-    contanier.lastElementChild.lastElementChild.innerHTML = leadElements.date
-} */
 async function getFetchApi(){
     const url = 'http://192.144.37.95:8080/api/articles?langId=1';
     try{
@@ -152,23 +151,10 @@ function GetFullInfo(DataApi){
         createDinamicArticles(cardImage,cardTitle,cardMainDate)
         createMoreArticles(cardTitle,cardMainDate,cardTitle,cardMainDate,cardTitle,cardMainDate)
 }
-function randomNumber(max){
-    return Math.floor(Math.random() * max);
- }
+
 window.addEventListener('load', function() {
         document.querySelector('.header-burger').addEventListener('click', ToggleClass)
         getFetchApi()
         
 })
-/* accessElements(otherArticle1, data[4]) */
-        /* accessElements(otherArticle2,data[5]) */
-        /* accessElements(otherArticle3,data[6])  */
 
-        /* contanier.children[3].firstElementChild.innerText = leadElements.title
-    contanier.children[3].lastElementChild.innerHTML = leadElements.date
-
-    contanier.children[5].firstElementChild.innerText = leadElements.title
-    contanier.children[5].lastElementChild.innerHTML = leadElements.date  */
-
-    /* contanier.children[1].firstElementChild.innerText = leadElements.title
-    contanier.children[1].lastElementChild.innerHTML = leadElements.date */

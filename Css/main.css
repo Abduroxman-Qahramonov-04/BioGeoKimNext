@@ -62,7 +62,11 @@
     right: 15px;
     border: none;
     font-size: 85%;
-    
+    transition: all 300ms;
+}
+.category-button:hover{
+    background-color: var(--primary_color);
+    color: var(--white_color);
 }
 .section-info{
     display: flex;

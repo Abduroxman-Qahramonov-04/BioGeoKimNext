@@ -1,0 +1,35 @@
+.fullINfoSection{
+    margin-top: 90px;
+    width: 850px;
+    height: 1100px;
+    background-color: #EBEBEB;
+    padding: 30px;
+}
+.fullINfoSection > img{
+    background-color: #C4C4C4;
+    width: 790px;
+    height: 577px;
+    margin-top: 40px;
+}
+.fullINfoSection h2{
+    font-size: 22px;
+    font-weight: var(--secondary_weight);
+    margin-bottom: 20px;
+}
+.fullINfoSection p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #343434;
+    margin-bottom: 30px;
+}
+.fullINfoSection > div{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+.fullINfoSection div div{
+    height: 28px;
+    width: 28px;
+    background-color: #C4C4C4;
+    border-radius: 50%;
+}
