@@ -139,8 +139,8 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
     ID++
 }
 
-async function getFetchApi(){
-    const url = 'http://192.144.37.95:8080/api/articles?langId=1';
+async function getFetchApi(langId=1){
+    const url = 'http://192.144.37.95:8080/api/articles?'+langId;
     try{
         const response = await fetch(url);
         const leadElements = await response.json();
