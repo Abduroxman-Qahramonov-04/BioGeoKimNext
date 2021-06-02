@@ -11,13 +11,22 @@ const BASE_IMAGE_URL = 'http://192.144.37.95/images/'
 let SELECTED_JOURNAL_ID = null;
 let SELECTED_LANG_ID = null;
 let ID = 0
-const pageUrl = new URL(window.location.href)
-const id = pageUrl.searchParams.get('id')
-console.log(pageUrl)
-console.log(id)
+let categoryId = 1
 
-function createDinamicArticles(imgSrc,title,date){
+function getCorrectDate(date) {
+    const d = new Date(date)
+    let dateStr = ("00" + d.getDate()).slice(-2) + "." + ("00" + (d.getMonth() + 1)).slice(-2) + "." + d.getFullYear()
+    return dateStr;
+}
+
+function createDinamicArticles(imgSrc,title,date,id){
     const sectionInfo = document.getElementById('sectionInfo')
+
+    let smallId = document.createElement('small')
+    smallId.innerText = id;
+    smallId.style.display = 'none'
+    sectionInfo.append(smallId)
+    console.log(smallId)
 
     let FirsFigcaption = document.createElement('figcaption')
     FirsFigcaption.classList.add('main-category')
@@ -28,7 +37,7 @@ function createDinamicArticles(imgSrc,title,date){
     FirsFigcaption.append(FirstDiv)
 
     let a_for_image = document.createElement('a')
-    a_for_image.href = './Article.html?langId=1' + '&id=' + id 
+    a_for_image.href = './Article.html?id=' + id;
     FirstDiv.append(a_for_image)
     
 
@@ -39,7 +48,7 @@ function createDinamicArticles(imgSrc,title,date){
 
     let CategoryButton = document.createElement('button')
     CategoryButton.classList.add('category-button')
-    CategoryButton.innerText = 'Category1'
+    CategoryButton.innerText = 'Category_' + categoryId
     a_for_image.append(CategoryButton)
 
     let SecondDiv = document.createElement('div')
@@ -57,6 +66,7 @@ function createDinamicArticles(imgSrc,title,date){
     SecondDiv.append(b_date)
 
     ID++
+    categoryId++
 
 }
 function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,articleMiddleDate,articleBottomtext,articleBottomDate){
@@ -76,6 +86,7 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
     moreFigaption.append(top_article)
 
     let p_art1 = document.createElement('p')
+    p_art1.classList.add('line-clamp')
     p_art1.innerText = articleToptext
     top_article.append(p_art1)
 
@@ -90,6 +101,7 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
     moreFigaption.append(middle_article)
 
     let p_art2 = document.createElement('p')
+    p_art2.classList.add('line-clamp')
     p_art2.innerText = articleMiddletext
     middle_article.append(p_art2)
 
@@ -104,6 +116,7 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
     moreFigaption.append(bottom_article)
 
     let p_art3 = document.createElement('p')
+    p_art3.classList.add('line-clamp')
     p_art3.innerText = articleBottomtext
     bottom_article.append(p_art3)
 
@@ -115,46 +128,41 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
     moreFigaption.append(document.createElement('br'))
     moreFigaption.append(document.createElement('br'))
 
+    a_for_button = document.createElement('a')
+    a_for_button.href = './subjects.html?langId=1&journalId=1&journalName=Biologiya'
+    moreFigaption.append(a_for_button)
+
     let AllButton = document.createElement('button')
     AllButton.innerText = 'Barchasi'
-    moreFigaption.append(AllButton)
+    a_for_button.append(AllButton)
 
     ID++
 }
+
 async function getFetchApi(){
     const url = 'http://192.144.37.95:8080/api/articles?langId=1';
     try{
         const response = await fetch(url);
         const leadElements = await response.json();
-        
+        Idcard = leadElements.id
         console.log(leadElements)   
         
         for (let index = 0; index < 3; index++) {
             const items = leadElements[index];
-            
-            GetFullInfo(items)
+            createDinamicArticles(items.image,items.title,getCorrectDate(items.date),items.id)
+            console.log(items.id)
         }
+        createMoreArticles(leadElements[3].title,getCorrectDate(leadElements[3].date),leadElements[4].title,getCorrectDate(leadElements[4].date),leadElements[5].title,getCorrectDate(leadElements[5].date))
+        createMoreArticles(leadElements[6].title,getCorrectDate(leadElements[6].date),leadElements[7].title,getCorrectDate(leadElements[7].date),leadElements[8].title,getCorrectDate(leadElements[8].date))
+        createMoreArticles(leadElements[9].title,getCorrectDate(leadElements[9].date),leadElements[10].title,getCorrectDate(leadElements[10].date),leadElements[11].title,getCorrectDate(leadElements[11].date))
     }
     catch (e){
         console.log(e)
     }
 }
-function GetFullInfo(DataApi){
-        let cardTitle = DataApi.title;
-        let cardImage = DataApi.image;  
-        let dateT = new Date(DataApi.date);
-        let day = dateT.getDay();
-        let month = dateT.getMonth();
-        let year = dateT.getFullYear(); 
-        let cardMainDate = day +'.'+month+'.'+year;
-        
-        createDinamicArticles(cardImage,cardTitle,cardMainDate)
-        createMoreArticles(cardTitle,cardMainDate,cardTitle,cardMainDate,cardTitle,cardMainDate)
-}
 
 window.addEventListener('load', function() {
         document.querySelector('.header-burger').addEventListener('click', ToggleClass)
-        getFetchApi()
-        
+        getFetchApi();
 })
 

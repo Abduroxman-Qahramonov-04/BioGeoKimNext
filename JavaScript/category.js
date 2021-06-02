@@ -12,8 +12,13 @@ function ToggleClass(){
 let SELECTED_JOURNAL_ID = null;
 let SELECTED_LANG_ID = null;
 let ID = 0;
+function getCorrectDate(date) {
+    const d = new Date(date)
+    let dateStr = ("00" + d.getDate()).slice(-2) + "." + ("00" + (d.getMonth() + 1)).slice(-2) + "." + d.getFullYear();
+    return dateStr;
+}
 
-function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,articleMiddleDate,articleBottomtext,articleBottomDate){
+function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,articleMiddleDate,articleBottomtext,articleBottomDate,articleBottomtext2,articleBottomDate2){
     const more_info = document.getElementById('more-articles_In_category')
 
     let moreFigaption = document.createElement('figcaption')
@@ -58,11 +63,11 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
     moreFigaption.append(middle_article2)
 
     let p_art2_2 = document.createElement('p')
-    p_art2_2.innerText = articleMiddletext
+    p_art2_2.innerText = articleBottomtext
     middle_article2.append(p_art2_2)
 
     let dateSpan2_2 = document.createElement('span')
-    dateSpan2_2.innerText = articleMiddleDate
+    dateSpan2_2.innerText = articleBottomDate
     middle_article2.append(dateSpan2_2)
 
     let hr3 = document.createElement('hr')
@@ -73,11 +78,11 @@ function createMoreArticles(articleToptext,articleTopDate,articleMiddletext,arti
     moreFigaption.append(bottom_article)
 
     let p_art3 = document.createElement('p')
-    p_art3.innerText = articleBottomtext
+    p_art3.innerText = articleBottomtext2
     bottom_article.append(p_art3)
 
     let dateSpan3 = document.createElement('span')
-    dateSpan3.innerText = articleBottomDate
+    dateSpan3.innerText = articleBottomDate2
     bottom_article.append(dateSpan3)
 
     ID++
@@ -107,8 +112,14 @@ function crearteBigCont(BigImgSrc,h5Text,BottomText){
     textSmall.innerHTML = BottomText
     cont_article.append(textSmall)
 }
-function createDinamicArticles(imgSrc,title,date){
+function createDinamicArticles(imgSrc,title,date,id){
     const sectionInfo = document.getElementById('last_section')
+
+    let smallId = document.createElement('small')
+    smallId.innerText = id;
+    smallId.style.display = 'none'
+    sectionInfo.append(smallId)
+    console.log(smallId)
 
     let FirsFigcaption = document.createElement('figcaption')
     FirsFigcaption.classList.add('main-category')
@@ -119,7 +130,7 @@ function createDinamicArticles(imgSrc,title,date){
     FirsFigcaption.append(FirstDiv)
 
     let a_for_image = document.createElement('a')
-    a_for_image.href = "./article.html"
+    a_for_image.href = './Article.html?id=' + id;
     FirstDiv.append(a_for_image)
     
 
@@ -149,67 +160,50 @@ function createDinamicArticles(imgSrc,title,date){
 
     ID++
 }
-async function getFetchApi(){
-    
-    try{
-        let loader = document.getElementById('loader')
-        loader.style.display = 'block'
-        const response = await fetch('http://192.144.37.95:8080/api/articles?langId=1');
-        const leadElements = await response.json();
-        loader.style.display = 'none'
-        for (let index = 0; index < leadElements.length; index++) {
-            const element = leadElements[index];
-            createDinamicArticles(element.image,element.title,element.date)
-        }
-        console.log(leadElements)   
-        
-        // crearteBigCont(leadElements[6].image,leadElements[6].title,leadElements[6].title)    
-    }
-    catch (e){
-        let loader = document.getElementById('loader')
-        loader.style.display = 'block'
-        console.log(e)
-        loader.style.display = 'none'
-    }
-    
-}
+
 async function getDataCategory(){
     try {
+        let loader = document.getElementById('loader')
+        loader.style.display = 'block'
         const url = `${BASE_URL}/articles?langId=1&journalId=${SELECTED_JOURNAL_ID}`;
         const responseJournal = await fetch(url)
         const ItemsFromServer = await responseJournal.json();
+        loader.style.display = 'none'
         console.log(SELECTED_JOURNAL_ID)
         let Category = document.getElementById('Category')
         if(SELECTED_JOURNAL_ID == 1){
             Category.innerText = 'Biologiya';
             crearteBigCont(ItemsFromServer[6].image,ItemsFromServer[6].title,ItemsFromServer[6].body)
-            for (let index = 0; index < 9; index++) {
+            for (let index = 0; index < 23; index++) {
                 const element = ItemsFromServer[index];
-                createDinamicArticles(element.image,element.title,element.date)
+                createDinamicArticles(element.image,element.title,getCorrectDate(element.date),element.id)
             }
-            createMoreArticles(ItemsFromServer[4].title,ItemsFromServer[4].date,ItemsFromServer[5].title,ItemsFromServer[5].date,ItemsFromServer[6].title,ItemsFromServer[6].date) 
+            createMoreArticles(ItemsFromServer[4].title,getCorrectDate(ItemsFromServer[4].date),ItemsFromServer[5].title,getCorrectDate(ItemsFromServer[5].date),ItemsFromServer[6].title,getCorrectDate(ItemsFromServer[6].date),ItemsFromServer[7].title,getCorrectDate(ItemsFromServer[7].date)) 
         }
         else if(SELECTED_JOURNAL_ID == 2){
             Category.innerText = 'Geografiya'
             crearteBigCont(ItemsFromServer[6].image,ItemsFromServer[6].title,ItemsFromServer[6].body) 
-            for (let index = 0; index < 9; index++) {
+            for (let index = 0; index < 23; index++) {
                 const element = ItemsFromServer[index];
-                createDinamicArticles(element.image,element.title,element.date)
+                createDinamicArticles(element.image,element.title,getCorrectDate(element.date),element.id)
             }
-            createMoreArticles(ItemsFromServer[4].title,ItemsFromServer[4].date,ItemsFromServer[5].title,ItemsFromServer[5].date,ItemsFromServer[6].title,ItemsFromServer[6].date) 
+            createMoreArticles(ItemsFromServer[4].title,getCorrectDate(ItemsFromServer[4].date),ItemsFromServer[5].title,getCorrectDate(ItemsFromServer[5].date),ItemsFromServer[6].title,getCorrectDate(ItemsFromServer[6].date),ItemsFromServer[7].title,getCorrectDate(ItemsFromServer[7].date)) 
         }
         else{
             Category.innerText = 'Kimyo'
-            crearteBigCont(ItemsFromServer[6].image,ItemsFromServer[6].title,ItemsFromServer[6].body) 
-            for (let index = 0; index < 9; index++) {
+            crearteBigCont(ItemsFromServer[6].image,ItemsFromServer[6].title,ItemsFromServer[6].title) 
+            for (let index = 0; index < 23; index++) {
                 const element = ItemsFromServer[index];
-                createDinamicArticles(element.image,element.title,element.date)
+                createDinamicArticles(element.image,element.title,getCorrectDate(element.date),element.id)
             }
-            createMoreArticles(ItemsFromServer[4].title,ItemsFromServer[4].date,ItemsFromServer[5].title,ItemsFromServer[5].date,ItemsFromServer[6].title,ItemsFromServer[6].date) 
+            createMoreArticles(ItemsFromServer[4].title,getCorrectDate(ItemsFromServer[4].date),ItemsFromServer[5].title,getCorrectDate(ItemsFromServer[5].date),ItemsFromServer[6].title,getCorrectDate(ItemsFromServer[6].date),ItemsFromServer[7].title,getCorrectDate(ItemsFromServer[7].date)) 
         }
     }
     catch(e){
+        let loader = document.getElementById('loader')
+        loader.style.display = 'block'
         console.log(e)
+        loader.style.display = 'none'
     }
 }
 
@@ -224,7 +218,7 @@ window.addEventListener('load', () => {
     
     document.querySelector('.header-burger').addEventListener('click', ToggleClass);
     
-    getFetchApi();
+   
     getDataCategory();
 
 })

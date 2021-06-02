@@ -1,20 +1,27 @@
 .fullINfoSection{
     margin-top: 90px;
     width: 850px;
-    height: 1100px;
+    
     background-color: #EBEBEB;
     padding: 30px;
 }
-.fullINfoSection > img{
+.fullINfoSection img{
     background-color: #C4C4C4;
     width: 790px;
     height: 577px;
-    margin-top: 40px;
+    margin-top: -30px;
 }
 .fullINfoSection h2{
     font-size: 22px;
     font-weight: var(--secondary_weight);
     margin-bottom: 20px;
+}
+.fullINfoSection pre div a img {
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    bottom: 0;
 }
 .fullINfoSection p {
     font-weight: 400;
@@ -27,9 +34,17 @@
     justify-content: space-between;
     margin: 30px 0;
 }
-.fullINfoSection div div{
+.fullINfoSection div pre div{
     height: 28px;
     width: 28px;
     background-color: #C4C4C4;
     border-radius: 50%;
+    position: absolute;
+    bottom: 62px;
 }
+.fullINfoSection pre a b {
+    position: absolute;
+    bottom: 60px;
+    left: 70px;
+}
+
