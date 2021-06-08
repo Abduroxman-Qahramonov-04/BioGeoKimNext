@@ -1,15 +1,24 @@
 const BASE_URL = 'http://192.144.37.95:8080/api';
 const BASE_IMAGE_URL = 'http://192.144.37.95/images/';
+let Id = null;
 
-function getQueryVariable(value,name){
+function getQueryVariable(value){
     const url_string = location.href; //window.location.href
     const url = new URL(url_string);
-    value = url.searchParams.get(name);
+    let key = url.searchParams.get(value);
+    return key;
 }
 
-async function getItems(langId,journalId,ArticleId,AuthorId){
-    const url = `${BASE_URL}/article?langId=${langId}&journalId=${journalId}&articleId=${ArticleId}&authorId=${AuthorId}`;
+async function getItems(object,s){
+    let url = `${BASE_URL}/article${s}?`;
+    for (const key in object) {
+        if (Object.hasOwnProperty.call(object, key)) {
+            const element = object[key];
+            url+= `&${key}=${element}`
+        }
+    }
     try{
+        console.log(url)
         const response = await fetch(url);
         const json = await response.json();
         return json;
@@ -17,7 +26,7 @@ async function getItems(langId,journalId,ArticleId,AuthorId){
     catch (e){
         console.log(e);
     }
-} 
+}
 function ToggleClass(){
     document.querySelector('.header-burger').classList.toggle('active')
     document.querySelector('.menu-box').classList.toggle('active')
@@ -33,24 +42,26 @@ function getCorrectDate(date) {
 function CreateCard(Card,data){
     // const sectionInfo = document.getElementById('sectionInfo')
 
-    let smallId = document.createElement('small')
-    smallId.innerText = data.id;
-    Article_ID = smallId.innerText
+    let smallId = document.createElement('small');
     smallId.style.display = 'none'
+    smallId.innerText = data.id;
+    Id = smallId.innerText
+    console.log(Id)
+
     Card.append(smallId)
     console.log(smallId)
     console.log(data.author.id)
 
     let FirsFigcaption = document.createElement('figcaption');
     FirsFigcaption.classList.add('main-category')
-    FirsFigcaption.id = 'MainCategoryId' + ID
+    FirsFigcaption.id = 'MainCategoryId' 
     Card.append(FirsFigcaption)
 
     let FirstDiv = document.createElement('div')
     FirsFigcaption.append(FirstDiv)
 
     let a_for_image = document.createElement('a')
-    a_for_image.href = './Article.html?id=' + Article_ID;
+    a_for_image.href = './Article.html?id=' + Id ;
     FirstDiv.append(a_for_image)
     
 
@@ -61,7 +72,7 @@ function CreateCard(Card,data){
 
     let CategoryButton = document.createElement('button')
     CategoryButton.classList.add('category-button')
-    CategoryButton.innerText = 'Category_' + categoryId
+    CategoryButton.innerText = 'Category_' 
     a_for_image.append(CategoryButton)
 
     let SecondDiv = document.createElement('div')
@@ -82,8 +93,8 @@ function CreateMoreCard(Card,Data){
     // const more_info = document.getElementById('more-info')
 
     let moreFigaption = document.createElement('figcaption')
-    moreFigaption.classList.add('other-article')
-    moreFigaption.id = 'moreArticlesId' + ID;
+    moreFigaption.classList.add('other-article');
+    moreFigaption.id = 'moreArticlesId';
     Card.append(moreFigaption)
 
     let h5Insidemore = document.createElement('h5')
@@ -137,14 +148,12 @@ function CreateMoreCard(Card,Data){
     moreFigaption.append(document.createElement('br'))
     moreFigaption.append(document.createElement('br'))
 
-    a_for_button = document.createElement('a')
-    a_for_button.href = './subjects.html?langId=1&journalId=1&journalName=Biologiya'
-    moreFigaption.append(a_for_button)
+    // a_for_button = document.createElement('a')
+    // a_for_button.href = './subjects.html?langId=1&journalId=1&journalName=Biologiya'
+    // moreFigaption.append(a_for_button)
 
     let AllButton = document.createElement('button')
     AllButton.innerText = 'Barchasi'
-    a_for_button.append(AllButton)
-
-    ID++
+    moreFigaption.append(AllButton)
 }
 export {BASE_URL,BASE_IMAGE_URL,getItems,ToggleClass,getCorrectDate,CreateCard,CreateMoreCard,getQueryVariable};

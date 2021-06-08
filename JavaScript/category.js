@@ -33,9 +33,13 @@ function crearteBigCont(BigImgSrc,h5Text,BottomText){
 }
 async function DrawOnUI(){
     try {
+        let object = {
+            langId: 1,
+            journalId: SELECTED_JOURNAL_ID
+        }
         let loader = document.getElementById('loader')
         loader.style.display = 'block'
-        const Data = await getItems(1,SELECTED_JOURNAL_ID,0,0);
+        const Data = await getItems(object,'s');
         loader.style.display = 'none'
         console.log(SELECTED_JOURNAL_ID)
 
@@ -63,7 +67,7 @@ async function DrawOnUI(){
         }
         else{
             Category.innerText = 'Kimyo'
-            crearteBigCont(Data[6].image,Data[6].title,Data[6].body) 
+            crearteBigCont(Data[6].image,Data[6].title,Data[6].body);
             for (let index = 0; index < 23; index++) {
                 CreateCard(last_section,Data[index])
             }
@@ -77,6 +81,7 @@ async function DrawOnUI(){
         loader.style.display = 'none'
     }
 }
+
 
 
 
