@@ -1,10 +1,10 @@
 import {getItems,ToggleClass,CreateCard,CreateMoreCard} from './GlobalFunction.js'
 
-function TryDraw(Data){
+function TryDraw(Target,Data){
     let sectionInfo = document.getElementById('sectionInfo');
     let more_info = document.getElementById('more-info');
-    CreateCard(sectionInfo,Data);
-    CreateMoreCard(more_info,Data);
+    CreateCard(Target,Data);
+    CreateMoreCard(Target,Data);
 }
 
 let object = {
