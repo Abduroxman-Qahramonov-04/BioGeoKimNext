@@ -46,16 +46,14 @@ function CreateCard(Card,data){
     smallId.style.display = 'none'
     smallId.innerText = data.id;
     Id = smallId.innerText
-    console.log(Id)
+    console.log(Id);
 
     Card.append(smallId)
-    console.log(smallId)
-    console.log(data.author.id)
-
+    
     let FirsFigcaption = document.createElement('figcaption');
     FirsFigcaption.classList.add('main-category')
     FirsFigcaption.id = 'MainCategoryId' 
-    Card.append(FirsFigcaption)
+    Card.append(FirsFigcaption);
 
     let FirstDiv = document.createElement('div')
     FirsFigcaption.append(FirstDiv)
@@ -156,4 +154,7 @@ function CreateMoreCard(Card,Data){
     AllButton.innerText = 'Barchasi'
     moreFigaption.append(AllButton)
 }
-export {BASE_URL,BASE_IMAGE_URL,getItems,ToggleClass,getCorrectDate,CreateCard,CreateMoreCard,getQueryVariable};
+function generateRandomItems(Item){
+    Math.floor(Math.random() * Item);
+}
+export {BASE_IMAGE_URL,getItems,ToggleClass,getCorrectDate,CreateCard,CreateMoreCard,getQueryVariable,generateRandomItems};
