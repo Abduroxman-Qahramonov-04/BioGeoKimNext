@@ -10,7 +10,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 }
 .subjects-main section pre {
     display: flex;
@@ -89,7 +88,7 @@
 .line-clamp-main {
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;  
+    -webkit-box-orient: vertical;
 }
 .last_section{
     display: flex;
@@ -116,5 +115,26 @@
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+  #More_info{
+      position: relative;
+      top: 100%;
+      margin: 50px auto;
+  }
+  #More_info button{
+    width: 243px;
+    height: 21px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    color: var(--primary_color);
+    background-color: var(--white_color);
+  }
+  #More_info span{
+      margin-left: 3px;
+      margin-right: 8px;
+  }
+  #More_info i {
+      font-size: 18px;
   }
   

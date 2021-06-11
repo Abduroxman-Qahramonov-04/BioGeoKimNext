@@ -1,12 +1,15 @@
-import {getItems,ToggleClass,CreateCard,CreateMoreCard} from './GlobalFunction.js'
+import {getItems,ToggleClass,CreateCard,CreateMoreCard,getQueryVariable} from './GlobalFunction.js'
 const BASE_IMAGE_URL = 'http://192.144.37.95/images/'
 let SELECTED_JOURNAL_ID = null;
-
-function getQueryVariable(){
-    const url_string = location.href; //window.location.href
-    const url = new URL(url_string);
-    SELECTED_JOURNAL_ID = url.searchParams.get('journalId');
+SELECTED_JOURNAL_ID = getQueryVariable('journalId') 
+let BASE_SIZE = 10;
+let object = {
+    langId: 1,
+    journalId: SELECTED_JOURNAL_ID,
+    size: BASE_SIZE,
+    offset: 0
 }
+
 function crearteBigCont(BigImgSrc,h5Text,BottomText){
     let second_section = document.getElementById('second_section')
 
@@ -33,13 +36,10 @@ function crearteBigCont(BigImgSrc,h5Text,BottomText){
 }
 async function DrawOnUI(){
     try {
-        let object = {
-            langId: 1,
-            journalId: SELECTED_JOURNAL_ID
-        }
         let loader = document.getElementById('loader')
         loader.style.display = 'block'
         const Data = await getItems(object,'s');
+        
         loader.style.display = 'none'
         console.log(SELECTED_JOURNAL_ID)
 
@@ -51,15 +51,13 @@ async function DrawOnUI(){
             Category.innerText = 'Biologiya';
             crearteBigCont(Data[6].image,Data[6].title,Data[6].body)
             for (let index = 0; index < 23; index++) {
-                
-                CreateCard(last_section,Data[index])
-                
+                CreateCard(last_section,Data[index]);
             }
             CreateMoreCard(more_articles_In_category,Data[6]);
         }
         else if(SELECTED_JOURNAL_ID == 2){
             Category.innerText = 'Geografiya'
-            crearteBigCont(Data[6].image,Data[6].title,Data[6].body)
+            crearteBigCont(Data[6].image,Data[6].title,Data[6].body);
             for (let index = 0; index < 23; index++) {
                 CreateCard(last_section,Data[index])
             }
@@ -81,12 +79,19 @@ async function DrawOnUI(){
         loader.style.display = 'none'
     }
 }
+function More_Info(){
+    let obj_size = object.size;
+    BASE_SIZE = BASE_SIZE + 4;
+    obj_size = BASE_SIZE;
+    console.log(obj_size);
+}
 
 
 
 
 window.addEventListener('load', () => {
-    getQueryVariable()
+    let MoreButton = document.getElementById('More_info');
+    MoreButton.addEventListener('click',More_Info)
     document.querySelector('.header-burger').addEventListener('click', ToggleClass);
     DrawOnUI()
 

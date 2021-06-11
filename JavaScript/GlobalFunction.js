@@ -1,6 +1,7 @@
 const BASE_URL = 'http://192.144.37.95:8080/api';
 const BASE_IMAGE_URL = 'http://192.144.37.95/images/';
 let Id = null;
+let BASE_AUTHOR_ID = null;
 
 function getQueryVariable(value){
     const url_string = location.href; //window.location.href
@@ -14,7 +15,7 @@ async function getItems(object,s){
     for (const key in object) {
         if (Object.hasOwnProperty.call(object, key)) {
             const element = object[key];
-            url+= `&${key}=${element}`
+            url+= `&${key}=${element}`;
         }
     }
     try{
@@ -39,21 +40,32 @@ function getCorrectDate(date) {
     let dateStr = ("00" + d.getDate()).slice(-2) + "." + ("00" + (d.getMonth() + 1)).slice(-2) + "." + d.getFullYear()
     return dateStr;
 }
-function CreateCard(Card,data){
+function CreateCard(data){
     // const sectionInfo = document.getElementById('sectionInfo')
+    
+    let FirsFigcaption = document.createElement('figcaption');
+    FirsFigcaption.classList.add('main-category')
+    FirsFigcaption.id = 'MainCategoryId';
+    console.log(FirsFigcaption)
 
     let smallId = document.createElement('small');
     smallId.style.display = 'none'
     smallId.innerText = data.id;
     Id = smallId.innerText
     console.log(Id);
+    FirsFigcaption.append(smallId);
 
-    Card.append(smallId)
+    let SmallId2 = document.createElement('small')
+    SmallId2.style.display = 'none';
+    SmallId2.innerText = data.author.id;
+    BASE_AUTHOR_ID = SmallId2.innerText;
+    console.log(BASE_AUTHOR_ID)
+    FirsFigcaption.append(SmallId2)
+
     
-    let FirsFigcaption = document.createElement('figcaption');
-    FirsFigcaption.classList.add('main-category')
-    FirsFigcaption.id = 'MainCategoryId' 
-    Card.append(FirsFigcaption);
+    // BASE_AUTHOR_ID = data.author.id;
+    // console.log(BASE_AUTHOR_ID + ' THIS`S AUTHOR_ID')
+
 
     let FirstDiv = document.createElement('div')
     FirsFigcaption.append(FirstDiv)
@@ -87,13 +99,12 @@ function CreateCard(Card,data){
     b_date.innerText = getCorrectDate(data.date);
     SecondDiv.append(b_date)
 }
-function CreateMoreCard(Card,Data){
+function CreateMoreCard(Data){
     // const more_info = document.getElementById('more-info')
 
     let moreFigaption = document.createElement('figcaption')
     moreFigaption.classList.add('other-article');
     moreFigaption.id = 'moreArticlesId';
-    Card.append(moreFigaption)
 
     let h5Insidemore = document.createElement('h5')
     h5Insidemore.innerText = 'Boshqa maqolalar'

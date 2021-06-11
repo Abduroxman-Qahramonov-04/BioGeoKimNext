@@ -68,6 +68,5 @@ async function DrawOnUI(){
 }
 
 window.addEventListener('load',function() {
-    DrawOnUI()
-    getQueryVariable();
+    DrawOnUI();
 })

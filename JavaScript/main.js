@@ -1,10 +1,9 @@
 import {getItems,ToggleClass,CreateCard,CreateMoreCard} from './GlobalFunction.js'
 
 function TryDraw(Target,Data){
-    let sectionInfo = document.getElementById('sectionInfo');
-    let more_info = document.getElementById('more-info');
-    CreateCard(Target,Data);
-    CreateMoreCard(Target,Data);
+    let ManyCard = CreateCard(Data);
+    Target.prepend(ManyCard);
+    console.log(Target);
 }
 
 let object = {
@@ -15,9 +14,10 @@ async function DrawOnUI(){
         document.querySelector('.header-burger').addEventListener('click', ToggleClass);
         const Data = await getItems(object,'s');
         console.log(Data); 
-        
+        let sectionInfo = document.getElementById('sectionInfo');
+        let more_info = document.getElementById('more-info');
         for (let index = 0; index < 3; index++) {
-            TryDraw(Data[index]);
+            TryDraw(sectionInfo,Data[index]);
         }
     } catch (e) {
         console.log(e)
