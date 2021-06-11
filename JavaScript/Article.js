@@ -38,7 +38,7 @@ function CreateArticle(data){
     a_author.append(author_image);
 
     let a_name = document.createElement('a')
-    a_name.href = "./author.html?authorId=" ;
+    a_name.href = `./author.html?authorId=${BASE_AUTHOR_ID}`;
     pre.append(a_name);
 
     let author_name = document.createElement('b');

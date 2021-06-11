@@ -16,7 +16,7 @@
     background-color: grey;
     position: absolute;
     top: 130px;
-    left: 186px;
+    left: 196px;
 }
 .section_to_author div img{
     width: 100%;
@@ -40,6 +40,6 @@
     color:black;
     position: relative;
     bottom: -50px;
-    left: 132px;
+    left: 10px;
     margin-right: 15px;
 }

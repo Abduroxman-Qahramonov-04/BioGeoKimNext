@@ -1,10 +1,4 @@
-import {getItems,ToggleClass,CreateCard,CreateMoreCard} from './GlobalFunction.js'
-
-function TryDraw(Target,Data){
-    let ManyCard = CreateCard(Data);
-    Target.prepend(ManyCard);
-    console.log(Target);
-}
+import {getItems,ToggleClass,CreateCard,CreateMoreCard,render} from './GlobalFunction.js'
 
 let object = {
     langId: 1,
@@ -14,10 +8,10 @@ async function DrawOnUI(){
         document.querySelector('.header-burger').addEventListener('click', ToggleClass);
         const Data = await getItems(object,'s');
         console.log(Data); 
-        let sectionInfo = document.getElementById('sectionInfo');
         let more_info = document.getElementById('more-info');
         for (let index = 0; index < 3; index++) {
-            TryDraw(sectionInfo,Data[index]);
+            let a = CreateCard(Data[index])
+            render('sectionInfo',a)
         }
     } catch (e) {
         console.log(e)

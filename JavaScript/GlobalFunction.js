@@ -46,7 +46,7 @@ function CreateCard(data){
     let FirsFigcaption = document.createElement('figcaption');
     FirsFigcaption.classList.add('main-category')
     FirsFigcaption.id = 'MainCategoryId';
-    console.log(FirsFigcaption)
+    console.log(FirsFigcaption);
 
     let smallId = document.createElement('small');
     smallId.style.display = 'none'
@@ -168,4 +168,8 @@ function CreateMoreCard(Data){
 function generateRandomItems(Item){
     Math.floor(Math.random() * Item);
 }
-export {BASE_IMAGE_URL,getItems,ToggleClass,getCorrectDate,CreateCard,CreateMoreCard,getQueryVariable,generateRandomItems};
+function render(item2,item1){
+    document.getElementById(item2).append(item1)
+    console.log(item2)
+}
+export {BASE_IMAGE_URL,getItems,ToggleClass,getCorrectDate,CreateCard,CreateMoreCard,getQueryVariable,generateRandomItems,render};

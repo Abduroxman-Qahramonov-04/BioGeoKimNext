@@ -86,13 +86,9 @@ function More_Info(){
     console.log(obj_size);
 }
 
-
-
-
 window.addEventListener('load', () => {
     let MoreButton = document.getElementById('More_info');
-    MoreButton.addEventListener('click',More_Info)
+    MoreButton.addEventListener('click',More_Info);
     document.querySelector('.header-burger').addEventListener('click', ToggleClass);
     DrawOnUI()
-
 })
