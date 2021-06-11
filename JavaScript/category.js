@@ -1,4 +1,4 @@
-import {getItems,ToggleClass,CreateCard,CreateMoreCard,getQueryVariable} from './GlobalFunction.js'
+import {getItems,ToggleClass,CreateCard,CreateMoreCard,getQueryVariable,render} from './GlobalFunction.js'
 const BASE_IMAGE_URL = 'http://192.144.37.95/images/'
 let SELECTED_JOURNAL_ID = null;
 SELECTED_JOURNAL_ID = getQueryVariable('journalId') 
@@ -36,40 +36,41 @@ function crearteBigCont(BigImgSrc,h5Text,BottomText){
 }
 async function DrawOnUI(){
     try {
-        let loader = document.getElementById('loader')
+        let loader = document.getElementById('loader');
         loader.style.display = 'block'
         const Data = await getItems(object,'s');
         
         loader.style.display = 'none'
-        console.log(SELECTED_JOURNAL_ID)
+        console.log(SELECTED_JOURNAL_ID);
 
         let Category = document.getElementById('Category')
-        let last_section = document.getElementById('last_section')
-        let more_articles_In_category = document.getElementById('more-articles_In_category')
+        
+        let a = CreateCard(Data)
+        let b = CreateMoreCard(Data[6]);
 
         if(SELECTED_JOURNAL_ID == 1){
             Category.innerText = 'Biologiya';
             crearteBigCont(Data[6].image,Data[6].title,Data[6].body)
             for (let index = 0; index < 23; index++) {
-                CreateCard(last_section,Data[index]);
+                render('last_section',a);
             }
-            CreateMoreCard(more_articles_In_category,Data[6]);
+            render('more_articles_In_category',b);
         }
         else if(SELECTED_JOURNAL_ID == 2){
             Category.innerText = 'Geografiya'
             crearteBigCont(Data[6].image,Data[6].title,Data[6].body);
             for (let index = 0; index < 23; index++) {
-                CreateCard(last_section,Data[index])
+                render('last_section',a);
             }
-            CreateMoreCard(more_articles_In_category,Data[6]); 
+            render('more_articles_In_category',b);
         }
         else{
             Category.innerText = 'Kimyo'
             crearteBigCont(Data[6].image,Data[6].title,Data[6].body);
             for (let index = 0; index < 23; index++) {
-                CreateCard(last_section,Data[index])
+                render('last_section',a);
             }
-            CreateMoreCard(more_articles_In_category,Data[6]);
+            render('more_articles_In_category',b);
         }
     }
     catch(e){
@@ -80,10 +81,10 @@ async function DrawOnUI(){
     }
 }
 function More_Info(){
-    let obj_size = object.size;
+    let obj_offset = object.offset;
     BASE_SIZE = BASE_SIZE + 4;
-    obj_size = BASE_SIZE;
-    console.log(obj_size);
+    obj_offset = BASE_SIZE;
+    console.log(obj_offset);
 }
 
 window.addEventListener('load', () => {

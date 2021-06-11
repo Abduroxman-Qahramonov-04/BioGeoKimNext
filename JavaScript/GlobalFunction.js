@@ -98,6 +98,8 @@ function CreateCard(data){
     b_date.classList.add('main-date')
     b_date.innerText = getCorrectDate(data.date);
     SecondDiv.append(b_date)
+
+    return FirsFigcaption;
 }
 function CreateMoreCard(Data){
     // const more_info = document.getElementById('more-info')
@@ -164,12 +166,16 @@ function CreateMoreCard(Data){
     let AllButton = document.createElement('button')
     AllButton.innerText = 'Barchasi'
     moreFigaption.append(AllButton)
+
+    return moreFigaption;
+
 }
 function generateRandomItems(Item){
     Math.floor(Math.random() * Item);
 }
 function render(item2,item1){
-    document.getElementById(item2).append(item1)
-    console.log(item2)
+    let s = document.getElementById(item2).append(item1)
+    console.log(s)
+    return s
 }
 export {BASE_IMAGE_URL,getItems,ToggleClass,getCorrectDate,CreateCard,CreateMoreCard,getQueryVariable,generateRandomItems,render};

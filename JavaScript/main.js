@@ -11,7 +11,9 @@ async function DrawOnUI(){
         let more_info = document.getElementById('more-info');
         for (let index = 0; index < 3; index++) {
             let a = CreateCard(Data[index])
+            let b = CreateMoreCard(Data[index])
             render('sectionInfo',a)
+            render('more-info',b)
         }
     } catch (e) {
         console.log(e)
