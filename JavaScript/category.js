@@ -45,13 +45,14 @@ async function DrawOnUI(){
 
         let Category = document.getElementById('Category')
         
-        let a = CreateCard(Data)
+        
         let b = CreateMoreCard(Data[6]);
 
         if(SELECTED_JOURNAL_ID == 1){
             Category.innerText = 'Biologiya';
             crearteBigCont(Data[6].image,Data[6].title,Data[6].body)
             for (let index = 0; index < 23; index++) {
+                let a = CreateCard(Data[index])
                 render('last_section',a);
             }
             render('more_articles_In_category',b);
@@ -60,6 +61,7 @@ async function DrawOnUI(){
             Category.innerText = 'Geografiya'
             crearteBigCont(Data[6].image,Data[6].title,Data[6].body);
             for (let index = 0; index < 23; index++) {
+                let a = CreateCard(Data[index])
                 render('last_section',a);
             }
             render('more_articles_In_category',b);
@@ -68,6 +70,7 @@ async function DrawOnUI(){
             Category.innerText = 'Kimyo'
             crearteBigCont(Data[6].image,Data[6].title,Data[6].body);
             for (let index = 0; index < 23; index++) {
+                let a = CreateCard(Data[index])
                 render('last_section',a);
             }
             render('more_articles_In_category',b);

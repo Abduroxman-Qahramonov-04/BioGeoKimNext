@@ -55,12 +55,12 @@ function CreateCard(data){
     console.log(Id);
     FirsFigcaption.append(smallId);
 
-    let SmallId2 = document.createElement('small')
-    SmallId2.style.display = 'none';
-    SmallId2.innerText = data.author.id;
-    BASE_AUTHOR_ID = SmallId2.innerText;
-    console.log(BASE_AUTHOR_ID)
-    FirsFigcaption.append(SmallId2)
+    // let SmallId2 = document.createElement('small')
+    // SmallId2.style.display = 'none';
+    // SmallId2.innerText = data.author.id;
+    // BASE_AUTHOR_ID = SmallId2.innerText;
+    // console.log(BASE_AUTHOR_ID)
+    // FirsFigcaption.append(SmallId2)
 
     
     // BASE_AUTHOR_ID = data.author.id;
@@ -174,7 +174,7 @@ function generateRandomItems(Item){
     Math.floor(Math.random() * Item);
 }
 function render(item2,item1){
-    let s = document.getElementById(item2).append(item1)
+    let s = document.getElementById(item2).prepend(item1)
     console.log(s)
     return s
 }
