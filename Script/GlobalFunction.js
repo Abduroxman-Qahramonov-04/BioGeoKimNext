@@ -62,11 +62,6 @@ function CreateCard(data){
     // console.log(BASE_AUTHOR_ID)
     // FirsFigcaption.append(SmallId2)
 
-    
-    // BASE_AUTHOR_ID = data.author.id;
-    // console.log(BASE_AUTHOR_ID + ' THIS`S AUTHOR_ID')
-
-
     let FirstDiv = document.createElement('div')
     FirsFigcaption.append(FirstDiv)
 
@@ -170,11 +165,9 @@ function CreateMoreCard(Data){
     return moreFigaption;
 
 }
-function generateRandomItems(Item){
-    Math.floor(Math.random() * Item);
-}
+
 function render(item2,item1){
-    let s = document.getElementById(item2).prepend(item1)
+    let s = document.getElementById(item2).prepend(item1);
     console.log(s)
     return s
 }
