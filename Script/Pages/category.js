@@ -1,98 +1,89 @@
-import {getItems,ToggleClass,CreateCard,CreateMoreCard,getQueryVariable,render} from './GlobalFunction.js'
-const BASE_IMAGE_URL = 'http://192.144.37.95/images/'
+import { crearteBigCont,createCard,render} from
+ '../Functions/card.js';
+import { getItems } from 
+'../Functions/api.js';
+import { ToggleClass,getQueryVariable } from 
+'../Functions/ additional.js';
+
 let SELECTED_JOURNAL_ID = null;
-SELECTED_JOURNAL_ID = getQueryVariable('journalId') 
-let BASE_SIZE = 10;
+SELECTED_JOURNAL_ID = getQueryVariable('journalId');
+
 let object = {
     langId: 1,
     journalId: SELECTED_JOURNAL_ID,
-    size: BASE_SIZE,
+    size: 100,
     offset: 0
 }
 
-function crearteBigCont(BigImgSrc,h5Text,BottomText){
-    let second_section = document.getElementById('second_section')
-
-    let cont_article = document.createElement('div')
-    cont_article.classList.add('cont-article')
-    second_section.prepend(cont_article)
-
-    let imgInContArticle = document.createElement('img')
-    imgInContArticle.src = BASE_IMAGE_URL + BigImgSrc
-    cont_article.append(imgInContArticle)
-
-    let BtnCategory = document.createElement('button')
-    BtnCategory.innerText = 'Category3'
-    cont_article.append(BtnCategory)
-
-    let article_h5 = document.createElement('h5')
-    article_h5.innerText = h5Text
-    cont_article.append(article_h5)
-
-    let textSmall = document.createElement('small')
-    textSmall.classList.add('line-clamp-main')
-    textSmall.innerHTML = BottomText
-    cont_article.append(textSmall)
-}
-async function DrawOnUI(){
+async function moreInfo(){
+    console.log('skdnfkjsdhfsdhf')
     try {
-        let loader = document.getElementById('loader');
-        loader.style.display = 'block'
-        const Data = await getItems(object,'s');
-        
-        loader.style.display = 'none'
-        console.log(SELECTED_JOURNAL_ID);
+        const data = await getItems(object,'s');
+        for (let index = 3; index < 6; index++) {
+            const element = data[index];
+            const card = createCard(element);
+            render('last_section',card);
+        }
+        object.offset = object.offset + 3;
+    } catch (e) {
+        console.log(e);
+    }
+}
 
-        let Category = document.getElementById('Category')
-        
-        
-        let b = CreateMoreCard(Data[6]);
+async function DrawOnUI(){
+    const animation = document.querySelector('.header-burger');
+    animation.addEventListener('click', ToggleClass);
+
+    const More_info = document.getElementById('More_info');
+    More_info.addEventListener('click',moreInfo);
+
+    const loader = document.getElementById('loader');
+    const Category = document.getElementById('Category');
+    try {
+        loader.style.display = 'block'
+        const data = await getItems(object,'s');
+        console.log(SELECTED_JOURNAL_ID);
+        console.log(data)
 
         if(SELECTED_JOURNAL_ID == 1){
             Category.innerText = 'Biologiya';
-            crearteBigCont(Data[6].image,Data[6].title,Data[6].body)
-            for (let index = 0; index < 23; index++) {
-                let a = CreateCard(Data[index])
-                render('last_section',a);
+            crearteBigCont(data[6]);
+            for (let index = 0; index < 6; index++) {
+                const element = data[index];
+                const card = createCard(element);
+                render('last_section',card);
             }
-            render('more_articles_In_category',b);
         }
+
         else if(SELECTED_JOURNAL_ID == 2){
-            Category.innerText = 'Geografiya'
-            crearteBigCont(Data[6].image,Data[6].title,Data[6].body);
-            for (let index = 0; index < 23; index++) {
-                let a = CreateCard(Data[index])
-                render('last_section',a);
+            Category.innerText = 'Geografiya';
+            crearteBigCont(data[11]);
+            for (let index = 0; index < 6; index++) {
+                const element = data[index];
+                const card = createCard(element);
+                render('last_section',card);
             }
-            render('more_articles_In_category',b);
         }
         else{
-            Category.innerText = 'Kimyo'
-            crearteBigCont(Data[6].image,Data[6].title,Data[6].body);
-            for (let index = 0; index < 23; index++) {
-                let a = CreateCard(Data[index])
-                render('last_section',a);
+            Category.innerText = 'Kimyo';
+            crearteBigCont(data[10]);
+            for (let index = 0; index < 6; index++) {
+                const element = data[index];
+                const card = createCard(element);
+                render('last_section',card);
             }
-            render('more_articles_In_category',b);
         }
     }
     catch(e){
-        let loader = document.getElementById('loader')
         loader.style.display = 'block'
         console.log(e)
-        loader.style.display = 'none'
+    }
+    finally {
+        loader.style.display = 'none';
     }
 }
-function More_Info(){
-    let obj_offset = object.offset;
-    BASE_SIZE = BASE_SIZE + 4;
-    obj_offset = BASE_SIZE;
-    console.log(obj_offset);
-}
+
 
 window.addEventListener('load', () => {
-    let MoreButton = document.getElementById('More_info');
-    MoreButton.addEventListener('click',More_Info);
-    document.querySelector('.header-burger').addEventListener('click', ToggleClass);
     DrawOnUI()
 })

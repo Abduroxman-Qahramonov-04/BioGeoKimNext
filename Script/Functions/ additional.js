@@ -16,4 +16,4 @@ function getCorrectDate(date) {
     let dateStr = ("00" + d.getDate()).slice(-2) + "." + ("00" + (d.getMonth() + 1)).slice(-2) + "." + d.getFullYear()
     return dateStr;
 }
-export {getQueryVariable,ToggleClass,getCorrectDate}
+export {getQueryVariable,ToggleClass,getCorrectDate};

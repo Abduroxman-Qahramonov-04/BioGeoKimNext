@@ -1,25 +1,36 @@
-import {getItems,ToggleClass,CreateCard,CreateMoreCard,render} from './GlobalFunction.js'
+import { createCard,crateMoreCard,render } from 
+"../Functions/card.js";
+import { ToggleClass } from 
+"../Functions/ additional.js";
+import { getItems } from 
+"../Functions/api.js";
 
-let object = {
-    langId: 1,
+const object = {
+    langId: 1 
 }
+
 async function DrawOnUI(){
+    const animation = document.querySelector('.header-burger');
+    animation.addEventListener('click', ToggleClass);
     try {
-        document.querySelector('.header-burger').addEventListener('click', ToggleClass);
-        const Data = await getItems(object,'s');
-        console.log(Data); 
-        let more_info = document.getElementById('more-info');
+        const data = await getItems(object,'s');
+        console.log(data);
+
         for (let index = 0; index < 3; index++) {
-            let a = CreateCard(Data[index])
-            let b = CreateMoreCard(Data[index])
-            render('sectionInfo',a)
-            render('more-info',b)
+            const element = data[index];
+            const card = createCard(element);
+            const moreCard = crateMoreCard(data);
+
+            render('sectionInfo',card);
+            render('more-info',moreCard);
         }
     } catch (e) {
-        console.log(e)
+        console.log(e);
     }
 }
 
-window.addEventListener('load', function() {
-        DrawOnUI();
+window.addEventListener('load', () => {
+    DrawOnUI();
 })
+
+

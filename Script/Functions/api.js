@@ -1,4 +1,4 @@
-import {} from './const.js'
+import {BASE_URL} from './const.js'
 
 
 async function getItems(object,s){
