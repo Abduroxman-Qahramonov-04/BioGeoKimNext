@@ -1,40 +1,40 @@
-import { ToggleClass,CreateCard,getItems,getQueryVariable, BASE_IMAGE_URL } from "./GlobalFunction"
-const IMAGE_URL = "http://192.144.37.95/images/";
-let BASE_AUTHOR_ID = getQueryVariable('authorId')
+import { createCard,createAuthorCard,render } from
+ "../Functions/card.js";
+import { getItems }from 
+"../Functions/api.js";
+import { ToggleClass,getQueryVariable } from 
+"../Functions/ additional.js";
+let BASE_AUTHOR_ID = null;
+BASE_AUTHOR_ID = getQueryVariable('authorId');
+
 const object = {
-    langId:1,
-    authorId:BASE_AUTHOR_ID
-}
-
-function createDinamicArticles(data){
-    let section_to_author = document.getElementById('section_to_author')
-    section_to_author.firstElementChild.firstElementChild.firstElementChild.src = IMAGE_URL + data.author.image;
-
-    let smallIDAuthor = document.getElementById('smallIDAuthor')
-    smallIDAuthor.innerText = data.author.id;
-    console.log(smallIDAuthor)
-
-    section_to_author.firstElementChild.children[1].innerText = data.author.name;
-    section_to_author.firstElementChild.children[2].innerText = data.author.bio;
+    langId: 1,
+    authorId: BASE_AUTHOR_ID,
+    size: 100,
+    offset: 10
 }
 async function DrawOnUI(){
+    const animation = document.querySelector('.header-burger');
+    animation.addEventListener('click', ToggleClass);
     try {
-        let unknown = document.getElementById('unknown')
-        document.querySelector('.header-burger').addEventListener('click', ToggleClass);
-        let loader = document.getElementById('loader')
-        loader.style.display = 'block'
-        const Data = await getItems(object,'');
-        console.log(object)
-        console.log(Data)
-        loader.style.display = 'none'
+        const data = await getItems(object,'');
+        console.log(data);
+        
+        // const authorCard = createAuthorCard(data);
+        // render('section_to_author',authorCard);
+
+        for (let index = 0; index < 1; index++) {
+            const element = data[index];
+            const card = createCard(element);
+            render('cardSection',card);
+        }
+
     } catch (e) {
-        let loader = document.getElementById('loader')
-        loader.style.display = 'block';
         console.log(e);
-        loader.style.display = 'none';
     }
 }
-window.addEventListener('load',() => {
-    DrawOnUI()
+
+window.addEventListener('load', () => {
+    DrawOnUI();
 })
 

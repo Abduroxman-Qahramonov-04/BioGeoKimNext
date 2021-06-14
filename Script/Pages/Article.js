@@ -13,9 +13,6 @@ const object = {
     id: BASE_ARTICLE_ID
 }
 
-
-
-
 async function DrawOnUI(){
     const animation = document.querySelector('.header-burger');
     animation.addEventListener('click', ToggleClass);

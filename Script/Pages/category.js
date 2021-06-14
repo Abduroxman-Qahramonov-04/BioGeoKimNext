@@ -16,7 +16,7 @@ let object = {
 }
 
 async function moreInfo(){
-    console.log('skdnfkjsdhfsdhf')
+    
     try {
         const data = await getItems(object,'s');
         for (let index = 3; index < 6; index++) {
@@ -24,7 +24,8 @@ async function moreInfo(){
             const card = createCard(element);
             render('last_section',card);
         }
-        object.offset = object.offset + 3;
+        const offsetObj = object.offset;
+        offsetObj = offsetObj + 3;
     } catch (e) {
         console.log(e);
     }
@@ -57,7 +58,7 @@ async function DrawOnUI(){
 
         else if(SELECTED_JOURNAL_ID == 2){
             Category.innerText = 'Geografiya';
-            crearteBigCont(data[11]);
+            crearteBigCont(data[29]);
             for (let index = 0; index < 6; index++) {
                 const element = data[index];
                 const card = createCard(element);

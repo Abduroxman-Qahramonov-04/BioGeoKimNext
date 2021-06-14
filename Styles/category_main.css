@@ -119,7 +119,9 @@
   #More_info{
       position: relative;
       top: 100%;
-      margin: 50px auto;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      margin-left: 40%;
   }
   #More_info button{
     width: 243px;

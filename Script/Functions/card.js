@@ -120,11 +120,11 @@ function createArticle(data){
     pre.append(div2);
 
     let a_author = document.createElement('a');
-    a_author.href = "./author.html?authorId=" ;
+    a_author.href = `./author.html?authorId=${BASE_AUTHOR_ID}` ;
     div2.append(a_author);
 
     let author_image = document.createElement('img');
-    author_image.src = BASE_IMAGE_URL + data.image;
+    author_image.src = BASE_IMAGE_URL + data.author.image;
     a_author.append(author_image);
 
     let a_name = document.createElement('a');
@@ -159,8 +159,50 @@ function crearteBigCont(data){
     textSmall.innerHTML = data.body;
     cont_article.append(textSmall);
 }
+function createAuthorCard(data){
+    const box = document.createElement('div');
+
+    const boxinbox = document.createElement('div');
+    box.append(boxinbox);
+
+    const author_image = document.createElement('img');
+    author_image.href = data.author.image;
+    boxinbox.append(author_image);
+
+    const author_name = document.createElement('h5');
+    author_name.innerText = data.author.name;
+    box.append(author_name);
+
+    const author_bio = document.createElement('p');
+    author_bio.innerText = data.author.bio;
+    box.append(author_bio);
+
+    const linkTelegram = document.createElement('a');
+    linkTelegram.href = 'https://www.instagram.com/';
+    box.append(linkTelegram);
+
+    const iconTelegram = document.createElement('i');
+    iconTelegram.classList.add('ri-instagram-line');
+    linkTelegram.append(iconTelegram);
+
+    const linkTwitter = document.createElement('a');
+    linkTwitter.href = 'https://twitter.com/?lang=en';
+    box.append(linkTwitter);
+
+    const iconTwitter = document.createElement('i');
+    iconTwitter.classList.add('ri-twitter-fill');
+    linkTwitter.append(iconTwitter);
+
+    const linkFacebook = document.createElement('a');
+    linkFacebook.href = 'https://www.facebook.com/';
+    box.append(linkFacebook);
+
+    const iconFacebook = document.createElement('i');
+    iconFacebook.classList.add('ri-facebook-fill');
+    linkFacebook.append(iconFacebook);
+}
 
 function render(item2,item1){
-    document.getElementById(item2).prepend(item1);
+    document.getElementById(item2).append(item1);
 }
-export {render,createCard,crateMoreCard,createArticle,crearteBigCont};
+export {render,createCard,crateMoreCard,createArticle,crearteBigCont,createAuthorCard};
